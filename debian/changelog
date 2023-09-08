@@ -1,5 +1,97 @@
-template-repository (1.0-1) unstable; urgency=medium
+fxlinuxprint (1.1.0+ds-4) unstable; urgency=medium
+
+  * Team upload
+
+  [ Thorsten Alteholz ]
+  * debian/control: use dh13
+  * debian/control: bump standard to 4.6.0 (no changes)
+  * debian/watch: as upstream is dead use fake entry
+  * debian/source/lintian-overrides: update overrides due to
+                                     fake entry in watch file
+  * add two patches
+    - fxlinuxprint-explicit-printer-models-in-ppd.patch
+    - fxlinuxprint-fix-ppd-loading-in-filter-and-buffer-overflow-warnings.patch
+
+  [ Roger Shimizu ]
+  * debian/control & debian/compat:
+    - Bump up debhelper to 12.
+  * debian/control:
+    - Update to use my debian email.
+    - Bump up policy version to 4.5.0 (no update required).
+    - Add Rules-Requires-Root: no
+  * Remove d/source.lintian-overrides, since it's unused.
+  * Add d/source/lintian-overrides, to ignore the dead insecure
+    upstream URL.
+  * Add d/lintian-overrides, to ignore executable-in-usr-lib
+  * debian/patches:
+    - Refresh patches.
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Tue, 19 Oct 2021 23:32:07 +0200
+
+fxlinuxprint (1.1.0+ds-3) unstable; urgency=medium
+
+  * Bump Standards-Version to 4.1.3 without changes needed
+  * Update Vcs-* fields for the move to salsa.d.o
+  * Instantiate gbp.conf and git-dpm
+
+ -- Didier Raboud <odyx@debian.org>  Sat, 10 Feb 2018 14:59:24 +0100
+
+fxlinuxprint (1.1.0+ds-2) unstable; urgency=medium
+
+  * Finish ITP (Closes: #841194).
+  * debian/control:
+    - Add pyppd as build-dependency.
+    - Move the git repo to alioth.
+  * debian/rules:
+    - Make use of pyppd in debhelper.
+    - Clean up.
+  * debian/patches:
+    - Remove 0001 patch, because all path are handled by debhelper now.
+    - Refresh other patches.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Mon, 12 Dec 2016 01:31:17 +0900
+
+fxlinuxprint (1.1.0+ds-1) unstable; urgency=medium
+
+  * debian/patches:
+    - Refresh 0001 patch
+    - Add 0002 patch to fix typo in fxlinuxprint.c
+    - Add 0003 patch to correct install path for *.types and *.convs files.
+      Thanks to advice of Till Kamppeter <till.kamppeter@gmail.com>.
+    - Add 0004 patch to make use of the pdftopdf filter for mimefx.convs.
+      Thanks to advice of Till Kamppeter <till.kamppeter@gmail.com>.
+  * debian/control:
+    - Set printing team as maintainer, and myself as uploader.
+    - Bump debhelper level to 10, remove implied build dependencies.
+    - Update URL of source
+    - Bump policy version to 3.9.8 (no change required).
+    - Rename binrary package name from fxlinuxprint
+      to printer-driver-fujixerox
+    - Add more supported printers to list
+  * debian/watch:
+    - Add watch file
+  * debian/rules:
+    - Remove implied parameters. Thanks to debhelper 10.
+  * debian/copyright:
+    - Update copyright years
+    - Update URL of source
+    - Update typo in description of GPL-2+
+    - Add entry of myself
+    - Add copyright for file: mimefx.convs mimefx.types
+  * debian/upstream/metadata:
+    - Add UpstreamMetadata file
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 21 Oct 2016 01:50:10 +0900
+
+fxlinuxprint (1.1.0-1~p2) unstable; urgency=medium
+
+  * Bump Standard version: 3.9.6
+  * Add gzip -n option to avoid timestamped gz
+
+ -- Youhei SASAKI <uwabami@gfd-dennou.org>  Thu, 10 Dec 2015 02:04:59 +0900
+
+fxlinuxprint (1.0.1-1) unstable; urgency=low
 
   * Initial release
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Youhei SASAKI <uwabami@gfd-dennou.org>  Sat, 27 Oct 2012 08:09:11 +0900

@@ -1,0 +1,5 @@
+# no mangling due to using fake entry
+debian-watch-not-mangling-version
+
+# upstream is dead, so no official URI can be used
+#debian-watch-uses-insecure-uri
