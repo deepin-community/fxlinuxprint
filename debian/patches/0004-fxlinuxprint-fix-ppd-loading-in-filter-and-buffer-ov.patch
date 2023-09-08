@@ -1,0 +1,67 @@
+From 740483f7d14bc629ee5a71c5d29ce63c79aa1e24 Mon Sep 17 00:00:00 2001
+From: Thorsten Alteholz <debian@alteholz.de>
+Date: Tue, 19 Oct 2021 20:15:21 +0000
+Subject: fxlinuxprint-fix-ppd-loading-in-filter-and-buffer-overflow-warnings
+
+---
+ fxlinuxprint.c | 17 ++++-------------
+ fxlinuxprint.h |  2 +-
+ 2 files changed, 5 insertions(+), 14 deletions(-)
+
+diff --git a/fxlinuxprint.c b/fxlinuxprint.c
+index 52d0ac7..fb9ee30 100644
+--- a/fxlinuxprint.c
++++ b/fxlinuxprint.c
+@@ -361,24 +361,19 @@ int main (int argc, const char* argv[])
+ int fxGetPrintOptions (int argc, const char* argv[], LPFX_OPTION_T opt)
+ {
+ 	const char			*file_name;
+-	int 				num_dests;
+ 	int 				i;
+ 	int 				j;
+ 	int					num_options;
+ 	int					myalloc;
+ 	cups_option_t		*p_options;
+-	cups_dest_t			*dest;
+-	cups_dest_t			*dests;
+ 	ppd_choice_t		*p_choice;
+ 	ppd_file_t			*p_ppd;
+ 	LPFX_PPD_OPT_CHOICE	p_option;
+ 
+-	// get destination printer
+-	num_dests = cupsGetDests (&dests);
+-	dest = cupsGetDest (NULL, NULL, num_dests, dests);
+-	file_name = cupsGetPPD (dest->name);
+-
+-	cupsFreeDests (num_dests, dests);
++	// Get PPD file name
++	file_name = getenv("PPD");
++	if (!file_name)
++	  return (1);
+ 
+ 	// get options
+ 	strcpy ( opt->job_name, argv[3]);
+@@ -442,10 +437,6 @@ int fxGetPrintOptions (int argc, const char* argv[], LPFX_OPTION_T opt)
+ 	}
+ 	cupsFreeOptions (num_options, p_options);
+ 
+-	// delete temp file
+-	unlink (file_name);
+-
+-
+ 	return (0);
+ }
+ 
+diff --git a/fxlinuxprint.h b/fxlinuxprint.h
+index f19aa58..81c6df7 100644
+--- a/fxlinuxprint.h
++++ b/fxlinuxprint.h
+@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ //-------- definitions -------------------------
+ #define		PDF_FILE_NAME  	"/tmp/tmp_fxpdfXXXXXX"
+ 
+-#define		MAX_STR_SIZE		64
++#define		MAX_STR_SIZE		256
+ #define		MAX_FILE_NAME_SIZE	128
+ #define		MAX_DECODE_BUF_SIZE	256
+ #define		READ_DATA_SIZE		(1024*256)

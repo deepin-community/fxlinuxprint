@@ -1,0 +1,5 @@
+0001-fix-typo-in-fxlinuxprint.c.patch
+0002-correct-install-path-for-.types-and-.convs-files.patch
+0003-make-use-of-the-pdftopdf-filter.patch
+0004-fxlinuxprint-fix-ppd-loading-in-filter-and-buffer-ov.patch
+0005-fxlinuxprint-explicit-printer-models-in-ppd.patch

@@ -1,0 +1,11 @@
+version=4
+opts=dversionmangle=s/.*/0.No-Release/ \
+https://people.debian.org/~eriberto/ FakeWatchNoUpstreamReleaseForThisPackage-(\d\S+)\.gz
+
+# upstream seems to be dead, so no longer use this but the fake entry above
+#version=4
+#
+#opts="repack,compression=xz, \
+#   dversionmangle=s/\+ds\d*$//,repacksuffix=+ds, \
+#   filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%fxlinuxprint-$1.tar.gz%" \
+#   ftp://download.fujixerox.co.jp/pub/exe/apeosport/c4300series/fxlinuxprint-src-(.+)\.tar\.gz

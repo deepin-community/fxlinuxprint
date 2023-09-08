@@ -1,9 +1,30 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+Upstream-Name: fxlinuxprint
+Source: https://www.fujixerox.co.jp/download/apeosport/download/c4300series/linux_module.html
+Files-Excluded:
+ INSTALL
+ Makefile.in
+ aclocal.m4
+ compile
+ configure
+ depcomp
+ install-sh
+ missing
+ mkinstalldirs
 
 Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
+Copyright: 2006-2011 Fuji Xerox Co.,Ltd.
+License: GPL-2+
+
+Files: mimefx.convs mimefx.types
+Copyright: 1997-2004, Easy Software Products.
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2008-2015 Youhei SASAKI <uwabami@gfd-dennou.org>
+           2016 Roger Shimizu <rogershimizu@gmail.com>
+License: GPL-2+
+
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
